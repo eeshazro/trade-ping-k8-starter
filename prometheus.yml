@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: trade-ping
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['trade-ping:8000']
+  - job_name: mock-trade-core
+    static_configs:
+      - targets: ['mock-trade-core:9100']

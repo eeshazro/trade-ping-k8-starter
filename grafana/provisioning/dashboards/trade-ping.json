@@ -1,0 +1,100 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1622471120404,
+  "panels": [
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "showLegend": true
+        }
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, rate(trade_ping_request_latency_seconds_bucket[1m]))",
+          "legendFormat": "p95 latency",
+          "interval": "",
+          "refId": "A"
+        }
+      ],
+      "title": "p95 Latency (1m)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "displayMode": "hidden"
+        }
+      },
+      "targets": [
+        {
+          "expr": "rate(trade_ping_requests_total[1m])",
+          "legendFormat": "req/s",
+          "refId": "A"
+        }
+      ],
+      "title": "Request Rate",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "displayMode": "hidden"
+        }
+      },
+      "targets": [
+        {
+          "expr": "rate(trade_ping_failures_total[1m])",
+          "legendFormat": "fail/s",
+          "refId": "A"
+        }
+      ],
+      "title": "Failure Rate",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 37,
+  "version": 1,
+  "title": "Trade-Ping Overview"
+}
